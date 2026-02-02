@@ -1,54 +1,66 @@
 import pandas as pd
 import mlflow
 import mlflow.sklearn
-from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
+import joblib
 
-# 1. Configuration de l'expérience MLflow
-# Cela crée un dossier "mlruns" localement pour stocker les résultats
+# Configuration de l'expérience MLflow
 mlflow.set_experiment("Iris_Sepal_Prediction")
 
 def train():
     with mlflow.start_run():
         # --- A. Ingestion des données ---
-        iris = load_iris()
-        # Le dataset Iris a 4 colonnes : 
-        # 0: Sepal Length, 1: Sepal Width, 2: Petal Length, 3: Petal Width
+        # On charge le fichier CSV nettoyé par vos camarades
+        try:
+            df = pd.read_csv("iris_cleaned.csv")
+            print("Fichier 'iris_cleaned.csv' chargé.")
+        except FileNotFoundError:
+            print("Erreur : Le fichier 'iris_cleaned.csv' est introuvable.")
+            return
+
+        # --- B. Sélection des Features (X) et Target (y) ---
+        # Consigne : Prédire la Longueur (y) à partir de la Largeur (X)
         
-        # Consigne : Prédire Longueur (y) à partir de Largeur (X)
-        X = iris.data[:, 1].reshape(-1, 1) # Colonne 1 : Sepal Width
-        y = iris.data[:, 0]                # Colonne 0 : Sepal Length
-        
-        # --- B. Split des données ---
-        # On garde 20% des données pour tester la qualité du modèle
+        # X = La variable explicative (Largeur). 
+        # Note : On met des doubles crochets [[ ]] pour garder un format DataFrame (2D)
+        try:
+            X = df[["sepal_width"]] 
+            y = df["sepal_length"]
+        except KeyError as e:
+            print(f"Erreur de colonne : {e}")
+            print("Vérifiez l'orthographe dans le CSV. Colonnes vues :", df.columns.tolist())
+            return
+
+        # --- C. Split des données (Train / Test) ---
+        # On garde 20% pour tester
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-        # --- C. Entraînement (Training) ---
+        # --- D. Entraînement ---
         model = LinearRegression()
         model.fit(X_train, y_train)
 
-        # --- D. Évaluation ---
+        # --- E. Évaluation ---
         predictions = model.predict(X_test)
         mse = mean_squared_error(y_test, predictions)
         r2 = r2_score(y_test, predictions)
 
-        print(f"Modèle entraîné !")
-        print(f"MSE (Erreur moyenne au carré): {mse}")
-        print(f"R2 Score: {r2}")
+        print(f"Modèle entraîné avec succès !")
+        print(f"   MSE: {mse}")
+        print(f"   R2: {r2}")
 
-        # --- E. Logging avec MLflow (Traçabilité) ---
-        # On enregistre les paramètres (ici aucun hyperparamètre complexe)
-        mlflow.log_param("model_type", "LinearRegression")
-        
-        # On enregistre les metrics de performance
+        # --- F. Logging MLflow & Sauvegarde ---
+        mlflow.log_param("data_source", "iris_cleaned.csv")
         mlflow.log_metric("mse", mse)
         mlflow.log_metric("r2", r2)
         
-        # On sauvegarde le modèle lui-même pour pouvoir le réutiliser plus tard
+        # Sauvegarde dans MLflow
         mlflow.sklearn.log_model(model, "model")
-        print("Modèle sauvegardé dans MLflow.")
+        
+        # Sauvegarde locale pour l'API
+        joblib.dump(model, "model.pkl")
+        print("Fichier 'model.pkl' mis à jour pour l'API.")
 
 if __name__ == "__main__":
     train()
