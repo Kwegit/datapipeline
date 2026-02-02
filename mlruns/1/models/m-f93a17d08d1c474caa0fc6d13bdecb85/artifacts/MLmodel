@@ -1,4 +1,4 @@
-artifact_path: /Users/axel/Documents/GitHub/datapipeline/mlruns/1/models/m-744d987e39774c88b4ec1ca7dc4930bb/artifacts
+artifact_path: /Users/axel/Documents/GitHub/datapipeline/mlruns/1/models/m-f93a17d08d1c474caa0fc6d13bdecb85/artifacts
 flavors:
   python_function:
     env:
@@ -15,9 +15,9 @@ flavors:
     sklearn_version: 1.5.0
     skops_trusted_types: null
 mlflow_version: 3.9.0
-model_id: m-744d987e39774c88b4ec1ca7dc4930bb
+model_id: m-f93a17d08d1c474caa0fc6d13bdecb85
 model_size_bytes: 419
-model_uuid: m-744d987e39774c88b4ec1ca7dc4930bb
+model_uuid: m-f93a17d08d1c474caa0fc6d13bdecb85
 prompts: null
-run_id: 847a0c2e4d1047fd83910ba8cade9e8c
-utc_time_created: '2026-02-02 09:19:21.711352'
+run_id: 54d342c8d3d948c593487780b09c027f
+utc_time_created: '2026-02-02 09:54:44.250565'
