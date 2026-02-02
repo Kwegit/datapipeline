@@ -14,5 +14,5 @@ df_clean.drop(columns=columns_to_delete, inplace=True)
 # 4. Sauvegarde de la version nettoyée dans un nouveau fichier
 df_clean.to_csv('iris_cleaned.csv', index=False)
 
-print("Le fichier dupliqué 'iris_cleaned.csv' a été créé avec succès !")
+print("Le fichier dupliqué 'iris_cleaned.csv' a été créé !")
 print("Colonnes restantes :", df_clean.columns.tolist())
