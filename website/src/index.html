@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SÉPALATOR</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-wrapper">
+        <main class="glass-card">
+            <header class="header">
+                <!-- <div class="badge">EPITECH</div> -->
+                <h1 class="title">SÉPALATOR</h1>
+            </header>
+
+            <section class="form-container">
+                <h2>Prédiction de la longueur du sépale</h2>
+                <p class="description">Entrez la largeur du sépale pour prédire la longueur du sépale.</p>
+
+                <form id="predictionForm">
+                    <div class="input-box">
+                        <label for="sepal_width">Largeur du sépale (cm)</label>
+                        <input type="number" id="sepal_width" step="0.1" placeholder="exemple : 3.5" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">PRÉDIRE</button>
+                </form>
+
+                <div id="resultDisplay" class="result-box hidden">
+                    <p>Longueur estimée par espèce</p>
+                    <div class="predictions">
+                        <div class="prediction" data-species="Setosa"><strong>Setosa</strong> : <span class="value">--</span> cm</div>
+                        <div class="prediction" data-species="Versicolor"><strong>Versicolor</strong> : <span class="value">--</span> cm</div>
+                        <div class="prediction" data-species="Virginica"><strong>Virginica</strong> : <span class="value">--</span> cm</div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                Propulsé par MLflow &amp; Docker
+            </footer>
+            
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
