@@ -64,7 +64,8 @@ def train():
         
         plt.xlabel('Vraie Longueur (cm)')
         plt.ylabel('Longueur Predite (cm)')
-        plt.title('Baseline : Largeur uniquement (Sans Espece)')
+        plt.title(f'Regression Lineaire : Largeur uniquement (Sans Espece)\nR² = {r2:.4f}')
+        # plt.title('Baseline : Largeur uniquement (Sans Espece)')
         plt.legend()
         
         # Nom de fichier different pour ne pas ecraser le bon graphique

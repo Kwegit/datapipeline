@@ -1,6 +1,5 @@
-#DATAPIPELINE
+# DATA PIPELINE
 
-Résumé
 - Projet Data Pipeline : entraînement d'un modèle Iris + interface web minimale pour prédictions.
 - Dossiers principaux :
   - `iris_project/` : code d'entraînement, export du modèle et backend (ex. `train.py`, `app.py`, `requirements.txt`).
@@ -29,7 +28,6 @@ Installation locale (sans Docker)
    ```
 5. Ouvrir l'interface
    - Ouvrir `website/src/index.html` dans un navigateur
-   - Ou servir : `cd website/src && python -m http.server 8000`
 
 Docker (reproductibilité)
 - Exemple : conteneur backend (API) + conteneur pour site statique (nginx).
