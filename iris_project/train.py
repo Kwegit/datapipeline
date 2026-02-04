@@ -75,7 +75,7 @@ def train():
         
         plt.xlabel('Vraie Longueur (cm)')
         plt.ylabel('Longueur Predite (cm)')
-        plt.title('Regression Lineaire : Reel vs Predit')
+        plt.title(f'Regression Lineaire : Reel vs Predit\nR² = {r2:.4f}')
         plt.legend()
         
         plot_filename = "prediction_plot_linear.png"
