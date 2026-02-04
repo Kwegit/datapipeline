@@ -8,7 +8,6 @@
 
 
 Installation locale (sans Docker)
-1. Cloner
    ```bash
    git clone <repo-url>
    cd datapipeline

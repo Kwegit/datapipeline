@@ -12,7 +12,7 @@ try:
     model = joblib.load('model.pkl')
     print(" Pipeline chargé : Prêt pour les prédictions multi-espèces")
 except Exception as e:
-    print(f"❌ Erreur : Impossible de charger model.pkl. {e}")
+    print(f"Erreur : Impossible de charger model.pkl. {e}")
     model = None
 
 @app.route('/')
@@ -57,4 +57,4 @@ def predict():
         return jsonify({"error": str(e), "status": "fail"}), 400
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5005, debug=True)
