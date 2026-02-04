@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SÉPALATOR</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-wrapper">
+        <main class="glass-card">
+            <header class="header">
+                <!-- <div class="badge">EPITECH</div> -->
+                <h1 class="title">SÉPALATOR</h1>
+            </header>
+
+            <section class="form-container">
+                <h2>Prédiction de la longueur du sépale</h2>
+                <p class="description">Entrez la largeur du sépale pour prédire la longueur du sépale.</p>
+
+                <form id="predictionForm">
+                    <div class="input-box">
+                        <label for="sepal_width">Largeur du sépale (cm)</label>
+                        <input type="number" id="sepal_width" step="0.1" min="0" placeholder="exemple : 3.5" required>
+                        <div id="sepalWidthError" class="error-message" aria-live="assertive" style="color:#920a0a;margin-top:6px;font-size:0.9rem;font-weight:700;"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">PRÉDIRE</button>
+                </form>
+
+                <div id="resultDisplay" class="result-box hidden">
+                    <p style="font-weight:700; font-size:1.1rem;">LONGUEUR ESTIMÉE PAR ESPÈCE</p>
+                    <div class="predictions">
+                        <div class="prediction" data-species="Setosa">
+                            <div class="label">Setosa</div>
+                            <div class="value">--</div>
+                            <div class="unit">cm</div>
+
+                        </div>
+                        <div class="prediction" data-species="Versicolor">
+                            <div class="label">Versicolor</div>
+                            <div class="value">--</div>
+                            <div class="unit">cm</div>
+                        </div>
+                        <div class="prediction" data-species="Virginica">
+                            <div class="label">Virginica</div>
+                            <div class="value">--</div>
+                            <div class="unit">cm</div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <!-- Propulsé par MLflow &amp; Docker <br> -->
+                <em>Réalisé par Ayodélé, Axel, Otinel & Evann</em>
+            </footer>
+            
+        </main>
+    </div>
+    <script src="js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var input = document.getElementById('sepal_width');
+        var error = document.getElementById('sepalWidthError');
+        var form = document.getElementById('predictionForm');
+
+        function validate() {
+            var val = parseFloat(input.value);
+            if (input.value !== '' && !Number.isNaN(val) && val < 0) {
+                error.textContent = 'La valeur ne peut pas être négative.';
+                input.classList.add('invalid');
+                input.setCustomValidity('La valeur ne peut pas être négative.');
+                return false;
+            } else {
+                error.textContent = '';
+                input.classList.remove('invalid');
+                input.setCustomValidity('');
+                return true;
+            }
+        }
+
+        input.addEventListener('input', validate);
+
+        form.addEventListener('submit', function (e) {
+            if (!validate()) {
+                e.preventDefault();
+                input.focus();
+            }
+        });
+    });
+    </script>
+</body>
+</html>
+</html>

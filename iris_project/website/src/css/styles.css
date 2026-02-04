@@ -1,0 +1,202 @@
+:root {
+    --epitech-blue: #0047ff;
+    --dark-bg: #0b0e14;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
+    --text-gray: #94a3b8;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--dark-bg);
+    color: white;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../assets/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    /* background-color: #f4f6f8; couleur de secours si l'image ne charge pas */
+}
+
+.main-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Optionnel : remplacez par votre image dans assets/images/ */
+    /* background: radial-gradient(circle at center, #1e293b 0%, #0b0e14 100%); */
+    background: radial-gradient(circle at center, #1e293b73 0%, #0b0e148c 100%);
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+
+
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.badge {
+    background: var(--epitech-blue);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.title {
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+h2 { font-size: 1.1rem; margin-bottom: 8px; }
+
+.description {
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    margin-bottom: 32px;
+}
+
+.input-box {
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    color: white;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--epitech-blue);
+}
+
+.btn-primary {
+    width: 100%;
+    background: var(--epitech-blue);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+
+.result-box {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.hidden { display: none; }
+
+.footer {
+    margin-top: 32px;
+    font-size: 0.7rem;
+    color: var(--text-gray);
+    opacity: 0.6;
+}
+
+.predictions {
+    display: grid;
+    gap: 12px;
+    margin-top: 12px;
+    width: 100%;
+}
+
+.prediction {
+    display: flex;
+    justify-content: space-between; /* force label à gauche, value à droite */
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.02);
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.prediction .label {
+    flex: 1 1 auto;         /* occupe l'espace disponible */
+    text-align: left;       /* texte aligné à gauche */
+    color: rgba(255, 255, 255, 0.80);
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: capitalize;
+    text-transform: uppercase;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.prediction .value {
+    flex: 0 0 auto;         /* taille fixe minimale */
+    text-align: right;      /* texte aligné à droite */
+    color: #D9D9D9;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    min-width: 56px;
+}
+
+.prediction .unit {
+    /* flex: 0 0 auto;         taille fixe minimale */
+    /* text-align: right;      texte aligné à droite */
+    color: #D9D9D9;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    /* min-width: 56px; */
+}
+
+/* optionnel : sur petits écrans permettre au label de revenir à la ligne */
+@media (max-width: 420px) {
+    .prediction .label { white-space: normal; }
+}
