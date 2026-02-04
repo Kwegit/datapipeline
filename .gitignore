@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+MANIFEST
+
+# Virtual Environments
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# MLflow
+mlruns/
+mlflow.db
+*.db
+
+# Models (optionnel - décommenter si vous ne voulez pas versionner les modèles)
+# *.pkl
+# *.h5
+# *.pth
+# *.pt
+
+# Logs
+*.log
+logs/
+
+# Data (optionnel - décommenter si datasets trop volumineux)
+# *.csv
+# data/
+
+# Docker
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+
+# Plots/Images générés
+# prediction_plot_*.png
+
+# Node
+node_modules/
+package-lock.json
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
