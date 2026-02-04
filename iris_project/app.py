@@ -1,8 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
 import joblib
 import pandas as pd
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='website/src', static_url_path='')
+CORS(app)  # Active CORS pour permettre les requêtes depuis le front-end
 
 # 1. Chargement du Pipeline
 try:
@@ -11,6 +14,10 @@ try:
 except Exception as e:
     print(f"❌ Erreur : Impossible de charger model.pkl. {e}")
     model = None
+
+@app.route('/')
+def index():
+    return send_from_directory('website/src', 'index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():

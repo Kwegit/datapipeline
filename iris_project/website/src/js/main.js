@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("sepal_width");
   const resultBox = document.getElementById("resultDisplay");
 
+  // URL de l'API Flask
+  const API_URL = "http://localhost:5000/predict";
+
   const setValue = (species, value) => {
     const el = document.querySelector(`.prediction[data-species="${species}"] .value`);
     if (!el) return;
@@ -33,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setLoading(true);
 
     try {
-      const res = await fetch("/predict", {
+      const res = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ sepal_width: width }),
